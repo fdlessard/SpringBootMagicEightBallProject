@@ -1,1 +1,1 @@
-# SpringBootEightBallProject
+# SpringBootMagicEightBallProject

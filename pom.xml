@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>io.fdlessard.codebites</groupId>
-	<artifactId>springbooteightballproject</artifactId>
+	<artifactId>springbooteightball</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>SpringBootEightBallProject</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Spring Boot Eight Ball Project</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
