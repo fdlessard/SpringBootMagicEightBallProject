@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>io.fdlessard.codebites</groupId>
-	<artifactId>springbooteightball</artifactId>
+	<artifactId>springbootmagiceightball</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>SpringBootEightBallProject</name>
-	<description>Spring Boot Eight Ball Project</description>
+	<description>Spring Boot Magic Eight Ball Project</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -40,6 +40,14 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.0</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
