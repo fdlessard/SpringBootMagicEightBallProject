@@ -6,9 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Created by fdlessard on 16-11-25.
@@ -59,6 +57,36 @@ public class MagicEightBallServiceImpl implements MagicEightBallService {
 
         return responseMap.get(randomResponseIndex);
     }
+
+    public MagicEightBallResponse getById(int id) {
+
+        LOGGER.debug("MagicEighBallServiceImpl.getById({})", id);
+
+        return responseMap.get(id);
+    }
+
+    public List<MagicEightBallResponse> getAll() {
+
+        LOGGER.debug("MagicEighBallServiceImpl.getAll()");
+
+        return new ArrayList<MagicEightBallResponse>(responseMap.values());
+    }
+
+    public void deleteById(int id) {
+
+        LOGGER.debug("MagicEighBallServiceImpl.deleteById({})", id);
+
+        throw new UnsupportedOperationException("deleteById()");
+    }
+
+    public void save(MagicEightBallResponse magicEightBallResponse) {
+
+        LOGGER.debug("MagicEighBallServiceImpl.save()");
+
+        throw new UnsupportedOperationException("save()");
+    }
+
+
 
     public static int generateRandomNumberBetween(int lowerBound, int upperBound) {
         return (new Random()).nextInt(upperBound - lowerBound) + lowerBound;
