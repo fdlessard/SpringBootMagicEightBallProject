@@ -5,10 +5,9 @@ import io.fdlessard.codebites.magiceightball.services.MagicEightBallService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * Created by fdlessard on 16-11-25.
@@ -32,10 +31,28 @@ public class MagicEightBallController {
 
     @RequestMapping(value = "/shake", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    MagicEightBallResponse shake() {
+    public MagicEightBallResponse shake() {
 
         LOGGER.debug("MagicEightBallController.shake()");
 
         return magicEightBallService.shake();
+    }
+
+    @RequestMapping(value = "/get/{id}", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public MagicEightBallResponse getById(@PathVariable int id) {
+
+        LOGGER.debug("MagicEightBallController.getById({})", id);
+
+        return magicEightBallService.getById(id);
+    }
+
+    @RequestMapping(value = "/getAll", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public List<MagicEightBallResponse> getAll() {
+
+        LOGGER.debug("MagicEightBallController.getAll()");
+
+        return magicEightBallService.getAll();
     }
 }

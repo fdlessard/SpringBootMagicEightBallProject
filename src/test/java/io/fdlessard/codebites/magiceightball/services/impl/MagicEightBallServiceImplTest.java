@@ -5,6 +5,8 @@ import io.fdlessard.codebites.magiceightball.services.MagicEightBallService;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 /**
@@ -26,6 +28,23 @@ public class MagicEightBallServiceImplTest {
 
         assertNotNull(magicEightBallResponse);
 
+    }
+
+    @Test
+    public void getById() throws Exception {
+
+        MagicEightBallResponse magicEightBallResponse = magicEightBallService.getById(1);
+
+        assertNotNull(magicEightBallResponse);
+    }
+
+    @Test
+    public void getAll() throws Exception {
+
+        List<MagicEightBallResponse> magicEightBallResponses = magicEightBallService.getAll();
+
+        assertNotNull(magicEightBallResponses);
+        assertEquals(20, magicEightBallResponses.size());
     }
 
 }
