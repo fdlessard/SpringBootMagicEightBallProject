@@ -1,6 +1,6 @@
 package io.fdlessard.codebites.magiceightball.services.impl;
 
-import io.fdlessard.codebites.magiceightball.domain.MagicEightBallResponse;
+import io.fdlessard.codebites.magiceightball.domain.MagicEightBallAnswer;
 import io.fdlessard.codebites.magiceightball.services.MagicEightBallService;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,27 +24,27 @@ public class MagicEightBallServiceImplTest {
     @Test
     public void shake() throws Exception {
 
-        MagicEightBallResponse magicEightBallResponse = magicEightBallService.shake();
+        MagicEightBallAnswer magicEightBallAnswer = magicEightBallService.shake();
 
-        assertNotNull(magicEightBallResponse);
+        assertNotNull(magicEightBallAnswer);
 
     }
 
     @Test
     public void getById() throws Exception {
 
-        MagicEightBallResponse magicEightBallResponse = magicEightBallService.getById(1);
+        MagicEightBallAnswer magicEightBallAnswer = magicEightBallService.getById(1);
 
-        assertNotNull(magicEightBallResponse);
+        assertNotNull(magicEightBallAnswer);
     }
 
     @Test
     public void getAll() throws Exception {
 
-        List<MagicEightBallResponse> magicEightBallResponses = magicEightBallService.getAll();
+        List<MagicEightBallAnswer> magicEightBallAnswers = magicEightBallService.getAll();
 
-        assertNotNull(magicEightBallResponses);
-        assertEquals(20, magicEightBallResponses.size());
+        assertNotNull(magicEightBallAnswers);
+        assertEquals(20, magicEightBallAnswers.size());
     }
 
 }

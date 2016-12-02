@@ -1,6 +1,6 @@
 package io.fdlessard.codebites.magiceightball.controllers;
 
-import io.fdlessard.codebites.magiceightball.domain.MagicEightBallResponse;
+import io.fdlessard.codebites.magiceightball.domain.MagicEightBallAnswer;
 import io.fdlessard.codebites.magiceightball.services.MagicEightBallService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +13,7 @@ import java.util.List;
  * Created by fdlessard on 16-11-25.
  */
 @RestController
+@RequestMapping(value = "/MagicEightBall")
 public class MagicEightBallController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MagicEightBallController.class);
@@ -31,7 +32,7 @@ public class MagicEightBallController {
 
     @RequestMapping(value = "/shake", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    public MagicEightBallResponse shake() {
+    public MagicEightBallAnswer shake() {
 
         LOGGER.debug("MagicEightBallController.shake()");
 
@@ -40,7 +41,7 @@ public class MagicEightBallController {
 
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    public MagicEightBallResponse getById(@PathVariable int id) {
+    public MagicEightBallAnswer getById(@PathVariable int id) {
 
         LOGGER.debug("MagicEightBallController.getById({})", id);
 
@@ -49,7 +50,7 @@ public class MagicEightBallController {
 
     @RequestMapping(value = "/getAll", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    public List<MagicEightBallResponse> getAll() {
+    public List<MagicEightBallAnswer> getAll() {
 
         LOGGER.debug("MagicEightBallController.getAll()");
 

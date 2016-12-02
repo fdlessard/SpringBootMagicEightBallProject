@@ -1,6 +1,6 @@
 package io.fdlessard.codebites.magiceightball.services;
 
-import io.fdlessard.codebites.magiceightball.domain.MagicEightBallResponse;
+import io.fdlessard.codebites.magiceightball.domain.MagicEightBallAnswer;
 
 import java.util.List;
 
@@ -9,14 +9,14 @@ import java.util.List;
  */
 public interface MagicEightBallService {
 
-    MagicEightBallResponse shake();
+    MagicEightBallAnswer shake();
 
-    MagicEightBallResponse getById(int id);
+    MagicEightBallAnswer getById(int id);
 
-    List<MagicEightBallResponse> getAll();
+    List<MagicEightBallAnswer> getAll();
 
     void deleteById(int id);
 
-    void save(MagicEightBallResponse magicEightBallResponse);
+    void save(MagicEightBallAnswer magicEightBallAnswer);
 
 }

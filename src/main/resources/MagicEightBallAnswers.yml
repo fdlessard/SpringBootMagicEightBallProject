@@ -1,0 +1,81 @@
+---
+-
+  id: 1
+  message: It is certain
+  color: green
+-
+  id: 2
+  message: It is decidedly so
+  color: green
+-
+  id: 3
+  message: Without a doubt
+  color: green
+-
+  id: 4
+  message: Yes, definitely
+  color: green
+-
+  id: 5
+  message: You may rely on it
+  color: green
+-
+  id: 6
+  message: As I see it, yes
+  color: green
+-
+  id: 7
+  message: Most likely
+  color: green
+-
+  id: 8
+  message: Outlook good
+  color: green
+-
+  id: 9
+  message: Yes
+  color: green
+-
+  id: 10
+  message: Signs point to yes
+  color: green
+-
+  id: 11
+  message: Reply hazy try again
+  color: blue
+-
+  id: 12
+  message: Ask again later
+  color: blue
+-
+  id: 13
+  message: Better not tell you now
+  color: blue
+-
+  id: 14
+  message: Cannot predict now
+  color: blue
+-
+  id: 15
+  message: Concentrate and ask again
+  color: blue
+-
+  id: 16
+  message: Don't count on it
+  color: red
+-
+  id: 17
+  message: My reply is no
+  color: red
+-
+  id: 18
+  message: My sources say no
+  color: red
+-
+  id: 19
+  message: Outlook not so good
+  color: red
+-
+  id: 20
+  message: Very doubtful
+  color: red

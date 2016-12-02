@@ -9,7 +9,7 @@ import java.io.Serializable;
 /**
  * Created by fdlessard on 16-11-25.
  */
-public class MagicEightBallResponse implements Serializable{
+public class MagicEightBallAnswer implements Serializable{
 
     private String id;
 
@@ -17,11 +17,11 @@ public class MagicEightBallResponse implements Serializable{
 
     private String color;
 
-    public MagicEightBallResponse() {
+    public MagicEightBallAnswer() {
         // Needed for mashalling
     }
 
-    public MagicEightBallResponse(String id, String message, String color) {
+    public MagicEightBallAnswer(String id, String message, String color) {
         this.id = id;
         this.message = message;
         this.color = color;
@@ -66,11 +66,11 @@ public class MagicEightBallResponse implements Serializable{
             return true;
         }
 
-        if (!(o instanceof MagicEightBallResponse)) {
+        if (!(o instanceof MagicEightBallAnswer)) {
             return false;
         }
 
-        MagicEightBallResponse that = (MagicEightBallResponse) o;
+        MagicEightBallAnswer that = (MagicEightBallAnswer) o;
 
         return new EqualsBuilder()
                 .append(id, that.id)
