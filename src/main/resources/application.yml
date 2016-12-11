@@ -1,17 +1,37 @@
 security:
   user:
     name: username
-    password: password
+    password: Password1
 
 eureka:
   client:
+    healthcheck:
+      enabled: true
     serviceUrl:
-      defaultZone: ${vcap.services.eureka-service.credentials.uri:http://127.0.0.1:8761}/eureka/
+      defaultZone: https://eureka:Password1@eureka-server.cfapps.us10.hana.ondemand.com:443/eureka
+
 
 ---
 spring:
   profiles: cloud
+
 eureka:
   instance:
-    hostname: ${APPLICATION_DOMAIN}
-    nonSecurePort: 80
+    hostname: ${vcap.application.uris[0]}
+    securePortEnabled: true
+    securePort: 443
+    nonSecurePortEnabled: false
+    non-secure-port: 80
+    metadata-map.instanceId: ${vcap.application.instance_id}
+
+# defaultZone: ${vcap.services.eureka-service.credentials.uri:https://eureka:changeme@eureka-service.cfapps.us10.hana.ondemand.com}/
+# defaultZone: ${vcap.services.eureka-service.credentials.uri:https://eureka:Password1@localhost:443}/eureka/
+# defaultZone: ${vcap.services.eureka-service.credentials.uri:https://eureka:changeme@eureka-service.cfapps.us10.hana.ondemand.com:8761}/eureka/
+# defaultZone: https://eureka:changeme@eureka-service.cfapps.us10.hana.ondemand.com
+# defaultZone: ${vcap.services.eureka-service.credentials.uri:http://localhost}/
+# defaultZone: ${vcap.services.eureka-service.credentials.uri:http://localhost:8761}/eureka/
+# defaultZone: ${vcap.services.eureka-service.credentials.uri:https://eureka:Password1@localhost:443}/eureka/
+
+# defaultZone: ${vcap.services.eureka-service.credentials.uri:https://eureka-service.cfapps.us10.hana.ondemand.com:8761}/eureka/
+# defaultZone: ${vcap.services.eureka-service.credentials.uri:https://eureka-service.cfapps.us10.hana.ondemand.com}/
+# defaultZone: ${vcap.services.eurekaservice.credentials.uri:https://magiceightball.cfapps.us10.hana.ondemand.com:8761}/eureka/

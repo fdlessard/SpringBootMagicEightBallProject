@@ -1,8 +1,11 @@
 # This file is used to push your web application to cloud foundry.
 ---
 applications:
-- name: MagicEightBall
-  path: target/magiceightball-0.0.1-SNAPSHOT.jar
+- name: magiceightball
+  path: target/MagicEightBall-0.0.1-SNAPSHOT.jar
   domain: cfapps.us10.hana.ondemand.com
+  host: magiceightball
   instances: 1
   memory: 512M
+  services:
+    - eureka-service
