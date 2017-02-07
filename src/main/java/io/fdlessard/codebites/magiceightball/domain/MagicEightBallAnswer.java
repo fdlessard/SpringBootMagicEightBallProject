@@ -4,34 +4,42 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import javax.persistence.*;
+import javax.validation.constraints.*;
+
 import java.io.Serializable;
 
 /**
  * Created by fdlessard on 16-11-25.
  */
+@Entity
 public class MagicEightBallAnswer implements Serializable{
 
-    private String id;
+    @Id
+    @GeneratedValue
+    private long id;
 
+    @NotNull(message = "MagicEightBallAnswer message must not be null")
     private String message;
 
+    @NotNull(message = "MagicEightBallAnswer color must not be null")
     private String color;
 
-    public MagicEightBallAnswer() {
-        // Needed for mashalling
+    @SuppressWarnings("unused")
+    private MagicEightBallAnswer() {
+        // Needed for marshalling
     }
 
-    public MagicEightBallAnswer(String id, String message, String color) {
-        this.id = id;
+    public MagicEightBallAnswer(String message, String color) {
         this.message = message;
         this.color = color;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 

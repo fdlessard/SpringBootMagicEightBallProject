@@ -8,7 +8,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @SpringBootApplication
 //@EnableDiscoveryClient
-@EnableEurekaClient
+//@EnableEurekaClient
 public class SpringBootMagicEightBallApplication {
 
 	public static void main(String[] args) {

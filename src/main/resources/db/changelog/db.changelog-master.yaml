@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: fdlessard
+      changes:
+        - createTable:
+            tableName: MAGIC_EIGHT_BALL_ANSWER
+            columns:
+              - column: {name: id, type: bigint, autoIncrement: true, constraints: {primaryKey: true, nullable: false}}
+              - column: {name: message, type: varchar(255), constraints: {nullable: false}}
+              - column: {name: color, type: varchar(25), constraints: {nullable: false}}
+        - loadData:
+            columns:
+            - column:
+                name: message
+                type: string
+            - column:
+                name: color
+                type: string
+            encoding: UTF-8
+            file: "db/data/MagicEightBallAnswers.csv"
+            quotchar: "'"
+            schemaName: public
+            separator: ','
+            tableName: MAGIC_EIGHT_BALL_ANSWER
+#        - customChange:
+#            class: io.github.jordao76.quotes.liquibase.InsertQuotesFromYaml
+#            params:
+#              - param: {name: fileName, value: db.initial-quotes.yaml}

@@ -1,10 +1,12 @@
 package io.fdlessard.codebites.magiceightball.services.impl;
 
 import io.fdlessard.codebites.magiceightball.domain.MagicEightBallAnswer;
+import io.fdlessard.codebites.magiceightball.repositories.MagicEightBallRepository;
 import io.fdlessard.codebites.magiceightball.services.MagicEightBallService;
 import io.fdlessard.codebites.magiceightball.utils.MagicEightBallUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,27 +22,32 @@ public class MagicEightBallServiceImpl implements MagicEightBallService {
 
     private static final List<MagicEightBallAnswer> MAGIC_EIGHT_BALL_ANSWERS = MagicEightBallUtils.readMagicEightBallAnswerFromYamlFile("MagicEightBallAnswers.yml");
 
+    @Autowired
+    private MagicEightBallRepository magicEightBallRepository;
+
     public MagicEightBallAnswer shake() {
 
         LOGGER.debug("MagicEighBallServiceImpl.shake()");
 
-        int randomResponseIndex = generateRandomNumberBetween(1, MAGIC_EIGHT_BALL_ANSWERS.size());
+        int randomResponseIndex = generateRandomNumberBetween(1, (int) magicEightBallRepository.count());
+
+        magicEightBallRepository.findOne((long) randomResponseIndex);
 
         return MAGIC_EIGHT_BALL_ANSWERS.get(randomResponseIndex);
     }
 
-    public MagicEightBallAnswer getById(int id) {
+    public MagicEightBallAnswer getById(long id) {
 
         LOGGER.debug("MagicEighBallServiceImpl.getById({})", id);
 
-        return MAGIC_EIGHT_BALL_ANSWERS.get(id);
+        return magicEightBallRepository.findOne(id);
     }
 
-    public List<MagicEightBallAnswer> getAll() {
+    public Iterable<MagicEightBallAnswer> getAll() {
 
         LOGGER.debug("MagicEighBallServiceImpl.getAll()");
 
-        return MAGIC_EIGHT_BALL_ANSWERS;
+        return magicEightBallRepository.findAll();
     }
 
     public void deleteById(int id) {

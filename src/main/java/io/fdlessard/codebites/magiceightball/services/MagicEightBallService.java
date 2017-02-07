@@ -11,9 +11,9 @@ public interface MagicEightBallService {
 
     MagicEightBallAnswer shake();
 
-    MagicEightBallAnswer getById(int id);
+    MagicEightBallAnswer getById(long id);
 
-    List<MagicEightBallAnswer> getAll();
+    Iterable<MagicEightBallAnswer> getAll();
 
     void deleteById(int id);
 

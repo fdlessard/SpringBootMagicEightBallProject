@@ -50,7 +50,7 @@ public class MagicEightBallController {
 
     @RequestMapping(value = "/getAll", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    public List<MagicEightBallAnswer> getAll() {
+    public Iterable<MagicEightBallAnswer> getAll() {
 
         LOGGER.debug("MagicEightBallController.getAll()");
 

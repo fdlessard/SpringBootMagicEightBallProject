@@ -1,7 +1,23 @@
+logging:
+  level:
+    ROOT: DEBUG
+
 security:
   user:
     name: username
     password: Password1
+
+spring:
+  datasource:
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:mem:m8b
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+  h2:
+    console:
+      enabled: true
 
 eureka:
   client:
@@ -9,7 +25,6 @@ eureka:
       enabled: true
     serviceUrl:
       defaultZone: https://eureka:Password1@eureka-server.cfapps.us10.hana.ondemand.com:443/eureka
-
 
 ---
 spring:
