@@ -26,6 +26,8 @@ eureka:
     serviceUrl:
       defaultZone: https://eureka:Password1@eureka-server.cfapps.us10.hana.ondemand.com:443/eureka
 
+tenantKey: tenantId-key
+
 ---
 spring:
   profiles: cloud

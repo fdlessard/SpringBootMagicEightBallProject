@@ -22,7 +22,7 @@ public class MagicEightBallUtilsTest {
     @Test
     public void readMagicEightBallAnswerFromYamlFile() throws Exception {
 
-        List<MagicEightBallAnswer> magicEightBallAnswers = MagicEightBallUtils.readMagicEightBallAnswerFromYamlFile("MagicEightBallAnswers.yml");
+        List<MagicEightBallAnswer> magicEightBallAnswers = MagicEightBallUtils.readMagicEightBallAnswerFromYamlFile("db/data/MagicEightBallAnswers.yml");
 
         assertNotNull(magicEightBallAnswers);
         assertEquals(20, magicEightBallAnswers.size());
