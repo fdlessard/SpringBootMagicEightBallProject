@@ -15,7 +15,7 @@ public interface MagicEightBallService {
 
     Iterable<MagicEightBallAnswer> getAll();
 
-    void deleteById(int id);
+    void deleteById(long id);
 
     void save(MagicEightBallAnswer magicEightBallAnswer);
 

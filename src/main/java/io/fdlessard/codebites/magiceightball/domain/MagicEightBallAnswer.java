@@ -14,13 +14,14 @@ import java.io.Serializable;
 /**
  * Created by fdlessard on 16-11-25.
  */
-@Entity(name="MAGIC_EIGHT_BALL_ANSWER")
+@Entity(name = "MAGIC_EIGHT_BALL_ANSWER")
 @Multitenant
 @TenantDiscriminatorColumn(name = "TENANT_ID")
 public class MagicEightBallAnswer implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator = "Seq")
+    @SequenceGenerator(name = "Seq", sequenceName = "SEQ_ID", allocationSize = 1)
     private Long id;
 
     @JsonIgnore

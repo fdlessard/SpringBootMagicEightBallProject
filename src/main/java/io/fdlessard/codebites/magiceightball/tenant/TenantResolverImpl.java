@@ -9,8 +9,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class TenantResolverImpl implements TenantResolver {
     
-    @Value("$(tenantKey)")
     private String tenantKey;
+
+    public TenantResolverImpl( @Value("${tenantKey}") String tenantKey) {
+        this.tenantKey = tenantKey;
+    }
 
     @Override
     public String getTenantKey() {

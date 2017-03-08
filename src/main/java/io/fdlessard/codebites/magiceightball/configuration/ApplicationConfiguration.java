@@ -14,8 +14,11 @@ public class ApplicationConfiguration extends WebMvcConfigurerAdapter {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ApplicationConfiguration.class);
 
-    @Autowired
     private TenantInterceptorAdapter tenantInterceptorAdapter;
+
+    public ApplicationConfiguration(TenantInterceptorAdapter tenantInterceptorAdapter) {
+        this.tenantInterceptorAdapter = tenantInterceptorAdapter;
+    }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {

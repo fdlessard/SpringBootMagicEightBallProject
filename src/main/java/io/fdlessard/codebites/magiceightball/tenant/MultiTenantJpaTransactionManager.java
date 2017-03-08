@@ -30,7 +30,6 @@ public class MultiTenantJpaTransactionManager extends JpaTransactionManager {
 
     @Override
     public void doBegin(Object transaction, final TransactionDefinition definition) {
-
         logger.info("MultiTenantJpaTransactionManager.doBegin()");
         super.doBegin(transaction, definition);
         EntityManagerHolder entityManagerHolder = (EntityManagerHolder) TransactionSynchronizationManager.getResource(getEntityManagerFactory());

@@ -6,11 +6,14 @@ databaseChangeLog:
         - createTable:
             tableName: MAGIC_EIGHT_BALL_ANSWER
             columns:
-              - column: {name: id, type: bigint, autoIncrement: true, constraints: {primaryKey: true, nullable: false}}
-              - column: {name: version, type: int, constraints: {nullable: true}}
+              - column: {name: id, type: bigint,  defaultValueSequenceNext: "seq_id", constraints: {primaryKey: true, nullable: false}}
+              - column: {name: version, type: int, defaultValueNumeric: 0, constraints: {nullable: false}}
               - column: {name: tenant_id, type: varchar(16), constraints: {nullable: false}}
               - column: {name: message, type: varchar(255), constraints: {nullable: false}}
               - column: {name: color, type: varchar(25), constraints: {nullable: false}}
+        - createSequence:
+            schemaName: public
+            sequenceName: seq_id
         - loadData:
             columns:
             - column:

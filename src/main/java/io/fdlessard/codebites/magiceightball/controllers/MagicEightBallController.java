@@ -22,38 +22,44 @@ public class MagicEightBallController {
     private MagicEightBallService magicEightBallService;
 
 
-    @RequestMapping(value = "/isAlive", method = RequestMethod.GET, produces = "application/json")
+    @GetMapping(value = "/isAlive", produces = "application/json")
     public String isAlive() {
-
         LOGGER.debug("MagicEightBallController.isAlive()");
-
         return "Hello World from MagicEightBallController";
     }
 
-    @RequestMapping(value = "/shake", method = RequestMethod.GET, produces = "application/json")
+    @GetMapping(value = "/shake", produces = "application/json")
     @ResponseBody
     public MagicEightBallAnswer shake() {
-
         LOGGER.debug("MagicEightBallController.shake()");
-
         return magicEightBallService.shake();
     }
 
-    @RequestMapping(value = "/get/{id}", method = RequestMethod.GET, produces = "application/json")
+    @GetMapping(value = "/{id}", produces = "application/json")
     @ResponseBody
-    public MagicEightBallAnswer getById(@PathVariable int id) {
-
+    public MagicEightBallAnswer getById(@PathVariable long id) {
         LOGGER.debug("MagicEightBallController.getById({})", id);
-
         return magicEightBallService.getById(id);
     }
 
-    @RequestMapping(value = "/getAll", method = RequestMethod.GET, produces = "application/json")
+    @GetMapping(value = "/", produces = "application/json")
     @ResponseBody
     public Iterable<MagicEightBallAnswer> getAll() {
-
         LOGGER.debug("MagicEightBallController.getAll()");
-
         return magicEightBallService.getAll();
     }
+
+    @PostMapping(value = "/", produces = "application/json")
+    public void create(@RequestBody MagicEightBallAnswer magicEightBallAnswer)  {
+        LOGGER.debug("MagicEightBallController.create({})", magicEightBallAnswer);
+        magicEightBallService.save(magicEightBallAnswer);
+    }
+
+    @DeleteMapping(value = "/{id}", produces = "application/json")
+    public void deleteById(@PathVariable long id) {
+        LOGGER.debug("MagicEightBallController.deleteById({})", id);
+        magicEightBallService.deleteById(id);
+    }
+
+
 }

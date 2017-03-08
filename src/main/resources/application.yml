@@ -13,8 +13,11 @@ spring:
     url: jdbc:h2:mem:m8b
   jpa:
     generate-ddl: false
-    hibernate:
-      ddl-auto: none
+    properties:
+      eclipselink.target-database: org.eclipse.persistence.platform.database.H2Platform
+      eclipselink.logging.parameters: true
+      eclipselink.logging.level: FINEST
+      eclipselink.weaving: false
   h2:
     console:
       enabled: true
@@ -26,7 +29,7 @@ eureka:
     serviceUrl:
       defaultZone: https://eureka:Password1@eureka-server.cfapps.us10.hana.ondemand.com:443/eureka
 
-tenantKey: tenantId-key
+tenantKey: tenant-key
 
 ---
 spring:
