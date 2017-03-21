@@ -13,10 +13,13 @@ public interface MagicEightBallService {
 
     MagicEightBallAnswer getById(long id);
 
+    List<MagicEightBallAnswer> getByIds(List<Long> ids);
+
     Iterable<MagicEightBallAnswer> getAll();
 
     void deleteById(long id);
 
     void save(MagicEightBallAnswer magicEightBallAnswer);
 
+    void save(Iterable<MagicEightBallAnswer> magicEightBallAnswer);
 }

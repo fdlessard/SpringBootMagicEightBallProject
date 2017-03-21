@@ -1,16 +1,22 @@
 package io.fdlessard.codebites.magiceightball.configuration;
 
 import io.fdlessard.codebites.magiceightball.tenant.MultiTenantJpaTransactionManager;
+import io.fdlessard.codebites.magiceightball.tenant.TenantResolver;
 import org.eclipse.persistence.config.PersistenceUnitProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.ObjectProvider;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties;
+import org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizers;
+import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.AbstractJpaVendorAdapter;
 import org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -33,15 +39,26 @@ public class PersistenceConfiguration extends JpaBaseConfiguration {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ApplicationConfiguration.class);
 
+    @Autowired
+    private  TenantResolver tenantResolver;
+
     protected PersistenceConfiguration(DataSource dataSource,
                                        JpaProperties properties,
-                                       ObjectProvider<JtaTransactionManager> jtaTransactionManagerProvider) {
-        super(dataSource, properties, jtaTransactionManagerProvider);
-
+                                       ObjectProvider<JtaTransactionManager> jtaTransactionManagerProvider,
+                                       ObjectProvider<TransactionManagerCustomizers> transactionManagerCustomizers) {
+        super(dataSource, properties, jtaTransactionManagerProvider, transactionManagerCustomizers);
         LOGGER.info("PersistenceConfiguration()");
     }
 
-    @Bean
+/*    @Bean
+    public PlatformTransactionManager transactionManager(EntityManagerFactory emf) {
+        LOGGER.info("PersistenceConfiguration.transactionManager()");
+        final JpaTransactionManager transactionManager = new MultiTenantJpaTransactionManager(tenantResolver);
+        transactionManager.setEntityManagerFactory(emf);
+        return transactionManager;
+    }*/
+
+   @Bean
     public PlatformTransactionManager transactionManager(MultiTenantJpaTransactionManager multiTenantJpaTransactionManager, EntityManagerFactory entityManagerFactory) {
         LOGGER.info("PersistenceConfiguration.transactionManager()");
         multiTenantJpaTransactionManager.setEntityManagerFactory(entityManagerFactory);

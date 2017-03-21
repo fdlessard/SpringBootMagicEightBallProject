@@ -21,7 +21,6 @@ public class MagicEightBallController {
     @Autowired
     private MagicEightBallService magicEightBallService;
 
-
     @GetMapping(value = "/isAlive", produces = "application/json")
     public String isAlive() {
         LOGGER.debug("MagicEightBallController.isAlive()");
@@ -42,6 +41,13 @@ public class MagicEightBallController {
         return magicEightBallService.getById(id);
     }
 
+    @GetMapping(value = "batch/{ids}", produces = "application/json")
+    @ResponseBody
+    public Iterable<MagicEightBallAnswer> getByIds(@PathVariable List<Long> ids) {
+        LOGGER.debug("MagicEightBallController.getByIds({})", ids);
+        return magicEightBallService.getByIds(ids);
+    }
+
     @GetMapping(value = "/", produces = "application/json")
     @ResponseBody
     public Iterable<MagicEightBallAnswer> getAll() {
@@ -50,9 +56,15 @@ public class MagicEightBallController {
     }
 
     @PostMapping(value = "/", produces = "application/json")
-    public void create(@RequestBody MagicEightBallAnswer magicEightBallAnswer)  {
+    public void post(@RequestBody MagicEightBallAnswer magicEightBallAnswer) {
         LOGGER.debug("MagicEightBallController.create({})", magicEightBallAnswer);
         magicEightBallService.save(magicEightBallAnswer);
+    }
+
+    @PostMapping(value = "/batch", produces = "application/json")
+    public void post(@RequestBody Iterable<MagicEightBallAnswer> magicEightBallAnswers) {
+        LOGGER.debug("MagicEightBallController.create({})", magicEightBallAnswers);
+        magicEightBallService.save(magicEightBallAnswers);
     }
 
     @DeleteMapping(value = "/{id}", produces = "application/json")
@@ -60,6 +72,4 @@ public class MagicEightBallController {
         LOGGER.debug("MagicEightBallController.deleteById({})", id);
         magicEightBallService.deleteById(id);
     }
-
-
 }

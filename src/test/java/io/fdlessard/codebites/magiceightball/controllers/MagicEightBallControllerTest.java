@@ -10,6 +10,7 @@ import static org.junit.Assert.*;
  * Created by fdlessard on 17-03-06.
  */
 public class MagicEightBallControllerTest {
+
     @Before
     public void setUp() throws Exception {
 
@@ -32,6 +33,11 @@ public class MagicEightBallControllerTest {
 
     @Test
     public void getById() throws Exception {
+
+    }
+
+    @Test
+    public void getByIds() throws Exception {
 
     }
 

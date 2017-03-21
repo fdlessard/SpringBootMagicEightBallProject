@@ -1,8 +1,7 @@
-package io.fdlessard.codebites.magiceightball.services.impl;
+package io.fdlessard.codebites.magiceightball.services;
 
 import io.fdlessard.codebites.magiceightball.domain.MagicEightBallAnswer;
 import io.fdlessard.codebites.magiceightball.repositories.MagicEightBallRepository;
-import io.fdlessard.codebites.magiceightball.services.MagicEightBallService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,16 +24,22 @@ public class MagicEightBallServiceImpl implements MagicEightBallService {
 
     public MagicEightBallAnswer shake() {
         LOGGER.debug("MagicEighBallServiceImpl.shake()");
-        Iterable<MagicEightBallAnswer>  it =  magicEightBallRepository.findAll();
-        List<MagicEightBallAnswer> target = new ArrayList<>();
-        it.forEach(target::add);
-        int randomResponseIndex = generateRandomNumberBetween(1, target.size());
-        return target.get(randomResponseIndex - 1);
+        Iterable<MagicEightBallAnswer>  it = magicEightBallRepository.findAll();
+        List<MagicEightBallAnswer> magicEightBallAnswers = new ArrayList<>();
+        it.forEach(magicEightBallAnswers::add);
+        int randomResponseIndex = generateRandomNumberBetween(1, magicEightBallAnswers.size());
+
+        return magicEightBallAnswers.get(randomResponseIndex - 1);
     }
 
     public MagicEightBallAnswer getById(long id) {
         LOGGER.debug("MagicEighBallServiceImpl.getById({})", id);
         return magicEightBallRepository.findOne(id);
+    }
+
+    public List<MagicEightBallAnswer> getByIds(List<Long> ids) {
+        LOGGER.debug("MagicEighBallServiceImpl.getByIds({})", ids);
+        return magicEightBallRepository.findByIds(ids);
     }
 
     public Iterable<MagicEightBallAnswer> getAll() {
@@ -52,8 +57,15 @@ public class MagicEightBallServiceImpl implements MagicEightBallService {
         magicEightBallRepository.save(magicEightBallAnswer);
     }
 
-    public static int generateRandomNumberBetween(int lowerBound, int upperBound) {
-        return (new Random()).nextInt(upperBound - lowerBound) + lowerBound;
+    public void save(Iterable<MagicEightBallAnswer> magicEightBallAnswers) {
+        LOGGER.debug("MagicEighBallServiceImpl.save()");
+        magicEightBallRepository.save(magicEightBallAnswers);
     }
 
+    public static int generateRandomNumberBetween(int lowerBound, int upperBound) {
+        if(upperBound <= lowerBound) {
+            return upperBound;
+        }
+        return (new Random()).nextInt(upperBound - lowerBound) + lowerBound;
+    }
 }

@@ -8,6 +8,7 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties;
+import org.springframework.boot.autoconfigure.transaction.TransactionManagerCustomizers;
 import org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.jta.JtaTransactionManager;
@@ -30,12 +31,14 @@ public class PersistenceConfigurationTest {
     private JpaProperties properties;
     @Mock
     private ObjectProvider<JtaTransactionManager> jtaTransactionManagerProvider;
+    @Mock
+    private ObjectProvider<TransactionManagerCustomizers> transactionManagerCustomizers;
 
     private PersistenceConfiguration persistenceConfiguration;
 
     @Before
     public void setUp() throws Exception {
-        persistenceConfiguration = new PersistenceConfiguration(dataSource, properties, jtaTransactionManagerProvider);
+        persistenceConfiguration = new PersistenceConfiguration(dataSource, properties, jtaTransactionManagerProvider, transactionManagerCustomizers);
     }
 
     @Test

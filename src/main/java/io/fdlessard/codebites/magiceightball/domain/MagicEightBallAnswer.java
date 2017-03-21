@@ -14,7 +14,9 @@ import java.io.Serializable;
 /**
  * Created by fdlessard on 16-11-25.
  */
-@Entity(name = "MAGIC_EIGHT_BALL_ANSWER")
+//@Entity(name = "MAGIC_EIGHT_BALL_ANSWER")
+@Entity()
+@Table(name="MAGIC_EIGHT_BALL_ANSWER")
 @Multitenant
 @TenantDiscriminatorColumn(name = "TENANT_ID")
 public class MagicEightBallAnswer implements Serializable {
@@ -28,19 +30,18 @@ public class MagicEightBallAnswer implements Serializable {
     @Version
     private int version;
 
-    @NotNull(message = "MagicEightBallAnswer tenantId must not be null")
+    @NotNull(message = "{magiceightball.tenantId}")
     @JsonIgnore
     @Column(name = "TENANT_ID", insertable = false, updatable = false)
     private String tenantId;
 
-    @NotNull(message = "MagicEightBallAnswer message must not be null")
+    @NotNull(message = "{magiceightball.message}")
     private String message;
 
-    @NotNull(message = "MagicEightBallAnswer color must not be null")
+    @NotNull(message ="{magiceightball.color}")
     private String color;
 
-    @SuppressWarnings("unused")
-    private MagicEightBallAnswer() {
+    public MagicEightBallAnswer() {
         // Needed for marshalling
     }
 

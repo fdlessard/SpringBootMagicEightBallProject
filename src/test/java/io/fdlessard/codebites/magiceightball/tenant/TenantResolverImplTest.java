@@ -30,5 +30,4 @@ public class TenantResolverImplTest {
         tenantResolver.setCurrentTenant(CURRENT_TENANT);
         assertEquals(CURRENT_TENANT, tenantResolver.getCurrentTenant());
     }
-
 }
